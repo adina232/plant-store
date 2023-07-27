@@ -2,6 +2,7 @@ package com.example.plantstore.wishlist;
 
 import com.example.plantstore.plant.Plant;
 import com.example.plantstore.plant.PlantRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class WishListService {
     @Autowired
     private WishListRepository wishListRepository;
@@ -22,7 +24,7 @@ public class WishListService {
 
     public void addToWishList(Integer id) {
         Optional<Plant> plant = plantRepository.findById(id);
-        if(plant.isPresent()) {
+        if (plant.isPresent()) {
             WishListItem wishListItem = new WishListItem();
             wishListItem.setName(plant.get().getName());
             wishListItem.setPrice(plant.get().getPrice());
